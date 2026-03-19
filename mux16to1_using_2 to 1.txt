@@ -1,0 +1,36 @@
+module mux_2_to_1(
+    input in1,in2,
+    input s,
+    output y
+    );
+    wire w1,w2,w3;
+    not g1(w1,s);
+    and g2(w2,in1,w1),g3(w3,in2,s);
+    or g4(y,w2,w3);    
+endmodule
+
+module mux16to1(
+    input[15:0]x,
+    input[3:0]sel,
+    output out
+    );
+    wire t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14;
+    
+     mux_2_to_1 m1(.in1(x[0]),.in2(x[1]),.s(sel[0]),.y(t1));
+     mux_2_to_1 m2(.in1(x[2]),.in2(x[3]),.s(sel[0]),.y(t2));
+     mux_2_to_1 m3(.in1(x[4]),.in2(x[5]),.s(sel[0]),.y(t3));
+     mux_2_to_1 m4(.in1(x[6]),.in2(x[7]),.s(sel[0]),.y(t4));
+     mux_2_to_1 m5(.in1(x[8]),.in2(x[9]),.s(sel[0]),.y(t5));
+     mux_2_to_1 m6(.in1(x[10]),.in2(x[11]),.s(sel[0]),.y(t6));
+     mux_2_to_1 m7(.in1(x[12]),.in2(x[13]),.s(sel[0]),.y(t7));
+     mux_2_to_1 m8(.in1(x[14]),.in2(x[15]),.s(sel[0]),.y(t8));
+     mux_2_to_1 m9(.in1(t1),.in2(t2),.s(sel[1]),.y(t9));
+     mux_2_to_1 m10(.in1(t3),.in2(t4),.s(sel[1]),.y(t10));
+     mux_2_to_1 m11(.in1(t5),.in2(t6),.s(sel[1]),.y(t11));
+     mux_2_to_1 m12(.in1(t7),.in2(t8),.s(sel[1]),.y(t12));
+     mux_2_to_1 m13(.in1(t9),.in2(t10),.s(sel[2]),.y(t13));
+     mux_2_to_1 m14(.in1(t11),.in2(t12),.s(sel[2]),.y(t14));
+     mux_2_to_1 m15(.in1(t13),.in2(t14),.s(sel[3]),.y(out));
+     
+    
+endmodule
